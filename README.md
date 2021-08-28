@@ -1,6 +1,6 @@
 I have some issue with hipfft AMD backend with striping.
 
-The inlcude hipfft.cpp file is simpling doing 4 forward ffts of 4 numbers with striping input. Output is not set to do striping for clearly showing result.
+The inlcude hipfft.cpp file just calculate 4 forward fft's of 4 numbers with striping input. Output is not set to do striping for clearly showing result.
 
 Input array is [0,1,2,3....14,15], trying to do striping 4, distance 1. (transpose of 4x4)
 
@@ -55,7 +55,8 @@ testfft$
 
 The rocfft.cpp is doing samething which give same wrong result as hipfft-amd-- did not do striping even the printed plan said so.
 
-Doing [0,1,2,3],[1,2,3,4],[2,3,4,5],[3,4,5,6] instead of [0,4,8,12],[1,5,9,13],[2,6,10,14],[3,7,11,15]
+It's doing [0,1,2,3],[1,2,3,4],[2,3,4,5],[3,4,5,6] instead of [0,4,8,12],[1,5,9,13],[2,6,10,14],[3,7,11,15]
+That is it took  the distance( elements between batch , 1) correct, but not striping (should be 4).
 
 ``` bash
 testfft$ hipcc -o rocfft rocfft.cpp -L /opt/rocm-4.3.0/hipfft/lib/ -lhipfft -L /opt/rocm-4.3.0/rocfft/lib/ -lrocfft 
