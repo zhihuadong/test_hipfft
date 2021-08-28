@@ -56,6 +56,7 @@ testfft$
 The rocfft.cpp is doing samething which give same wrong result as hipfft-amd-- did not do striping even the printed plan said so.
 
 It's doing [0,1,2,3],[1,2,3,4],[2,3,4,5],[3,4,5,6] instead of [0,4,8,12],[1,5,9,13],[2,6,10,14],[3,7,11,15]
+
 That is it took  the distance( elements between batch , 1) correct, but not striping (should be 4).
 
 ``` bash
