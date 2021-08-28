@@ -105,3 +105,5 @@ testfft$
 ```
 
 Output striping is also not working if I set it in the code. 
+
+The test was with rocm 4.3 distribution.  Also tested the master branch of rocfft in github (many hours of compiling) which does the same. 
