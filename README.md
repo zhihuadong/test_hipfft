@@ -101,3 +101,5 @@ buf_size: 128 Status: 0
 10000+ 10000i 
 testfft$
 ```
+
+Output striping is also not working if I set it in the code. 
